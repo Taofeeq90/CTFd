@@ -18,6 +18,8 @@ RUN pip install -r requirements.txt --no-cache-dir
 
 COPY . /opt/CTFd
 
+RUN head -c 64 /dev/urandom > .ctfd_secret_key
+
 # hadolint ignore=SC2086
 RUN for d in CTFd/plugins/*; do \
         if [ -f "$d/requirements.txt" ]; then \
